@@ -1,7 +1,6 @@
 import { Text, View, StyleSheet, TextInput, Pressable } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Styles } from "../assets/CSS/Styles";
-import AntDesign from '@expo/vector-icons/AntDesign';
 import { useState } from "react";
 import { auth } from '../assets/firebase.config';
 import {signInWithEmailAndPassword} from 'firebase/auth';
@@ -31,8 +30,12 @@ export default function Index() {
     router.replace('/cadastro');
   }
 
-  return (
+  function replacePass(){
+    router.replace('/replacePass');
+  }
 
+  return (
+    
     <View style={Styles.container}>
       <Text style={Styles.formTitle}>Login do sistema</Text>
       <StatusBar style="auto" />
@@ -55,7 +58,8 @@ export default function Index() {
         <Text style={Styles.TextButton}>logar</Text>
       </Pressable>
       <View style={Styles.subContainer}>
-        <Pressable style={Styles.subButton}>
+        <Pressable style={Styles.subButton}
+        onPress={replacePass}>
           <Text style={Styles.subTextButton}>esqueci minha senha </Text>
         </Pressable>
         <Pressable style={Styles.subButton} 

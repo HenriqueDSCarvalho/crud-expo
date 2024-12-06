@@ -45,6 +45,22 @@ export const Styles = StyleSheet.create({
     },
     subTextButton: {
         color: "blueviolet",
-    }
-
-})
+    },
+    //telas internas
+    internalContainer: {
+        flex: 1,
+        alignItems: 'flex-start',
+        paddingTop: 25,
+    },
+    topBar: {
+        flexDirection: 'row-reverse',
+        padding: 10,
+        backgroundColor: 'blueviolet',
+        width: '100%',
+    },
+    topBarButtonText: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: '700',
+    },
+});

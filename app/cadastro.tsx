@@ -1,7 +1,7 @@
 import { View, Text, TextInput, Pressable } from "react-native";
 import { Styles } from '../assets/CSS/Styles';
 import { useState } from "react";
-import {useRouter} from "expo-router";
+import { useRouter } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../assets/firebase.config';
 
@@ -23,41 +23,41 @@ export default function cadastro() {
             createUserWithEmailAndPassword(auth, userMail, userPass)
                 .then((UserCredential) => {
                     const user = UserCredential.user;
-                    alert("o usuario " +  userMail + " foi criado, faça login ");
+                    alert("o usuario " + userMail + " foi criado, faça login ");
                     router.replace('/');
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
                     alert(errorMessage);
                     router.replace('/');
-                    
+
                 })
         }
     }
     return (
         <View style={Styles.container}>
             <Text style={Styles.formTitle}>
-                cadastro            
+                cadastro
             </Text>
 
-            <TextInput 
+            <TextInput
                 style={Styles.FormInput}
                 placeholder="E-mail de usuario"
                 keyboardType="email.adress"
                 autoCapitalize="none"
                 autoComplete="email"
                 value={userMail}
-                onChangeText={setUserMail}    
+                onChangeText={setUserMail}
             />
-            <TextInput 
+            <TextInput
                 style={Styles.FormInput}
                 placeholder="Senha de usuario"
                 autoCapitalize="none"
                 secureTextEntry
                 value={userPass}
-                onChangeText={setUserPass} 
+                onChangeText={setUserPass}
             />
-            <TextInput 
+            <TextInput
                 style={Styles.FormInput}
                 placeholder="repita a senha"
                 autoCapitalize="none"
@@ -65,15 +65,19 @@ export default function cadastro() {
                 value={userRePass}
                 onChangeText={setUserRePass}
             />
-        <Pressable style={Styles.FormButton}
-        onPress={newUser}
-        >
-            <Text style={Styles.TextButton}>
-                cadastrar
-            </Text>
+            <Pressable style={Styles.FormButton}
+                onPress={newUser}
+            >
+                <Text style={Styles.TextButton}>
+                    cadastrar
+                </Text>
 
-        </Pressable>
-            
+            </Pressable>
+
+            <Pressable onPress={() => router.push("/")}>
+                <Text>voltar</Text>
+            </Pressable>
+
         </View>
     );
 }
